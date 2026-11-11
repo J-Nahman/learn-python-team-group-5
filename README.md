@@ -1,3 +1,12 @@
+# SMALL CHANGE IN THE READ ME:
+> [!IMPORTANT]
+> Group 5: 
+>  - Mubeen Khan `(40313724)`
+>  - Rachelle Badua `(40313723)`
+>  - Marc Matta `(40275417)`
+>  - Joaquin Nahman `(40270510)`
+
+
 # Playground and Cheatsheet for Learning Python
 
 > 🇺🇦 UKRAINE [IS BEING ATTACKED](https://war.ukraine.ua/) BY RUSSIAN ARMY. CIVILIANS ARE GETTING KILLED. RESIDENTIAL AREAS ARE GETTING BOMBED.
