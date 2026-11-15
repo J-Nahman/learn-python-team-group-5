@@ -77,3 +77,29 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+def test_dictionary_update():
+    """Updating dictionary entries."""
+
+    fruit_inventory = {
+        'pineapple': 11,
+        'watermelon': 5,
+        'lemon': 16,
+        'cherry': 30
+    }
+
+    # Assigning a value to an existing key replaces the value
+    fruit_inventory['lemon'] = 21
+    assert fruit_inventory['lemon'] == 21
+
+    # Using update() to overwrite existing keys with values in a dictionary
+    fruit_inventory.update({'pineapple': 8, 'watermelon': 11})
+    assert fruit_inventory['pineapple'] == 8
+    assert fruit_inventory['watermelon'] == 11
+
+    # Using update() also accepts keyword arguments when keys are simple strings
+    fruit_inventory.update(cherry=21)
+    assert fruit_inventory['cherry'] == 21
+
+    # Checking the length of the dictionary because updating does not change its length
+    assert len(fruit_inventory) == 4
