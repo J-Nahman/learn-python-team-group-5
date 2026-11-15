@@ -103,3 +103,49 @@ def test_dictionary_update():
 
     # Checking the length of the dictionary because updating does not change its length
     assert len(fruit_inventory) == 4
+
+def test_dictionary_retrieval():
+    """Retrieving dictionary entries."""
+
+    world_capitals = {
+        'Philippines': 'Manila',
+        'Canada': 'Ottawa',
+        'Spain': 'Madrid',
+        'South Korea': 'Seoul',
+        'Australia': 'Canberra',
+        'United Kingdom': 'London'
+    }
+
+    # Using sqaure brackets return the value of a key
+    assert world_capitals['Canada'] == 'Ottawa'
+
+    # Sqaure brackets raise a KeyError when the key is missing
+    try:
+        world_capitals['Brazil']
+        assert False, 'KeyError was expected'
+    except KeyError:
+        pass
+
+    # Using get() returns None for a missing key instead of raising a KeyError
+    assert world_capitals.get('Brazil') is None
+
+    # get() also returns a default value if one is provided
+    assert world_capitals.get('Brazil', 'Unknown') == 'Unknown'
+    assert world_capitals.get('Spain', 'Unknown') == 'Madrid'
+
+    # Using keys(), values() and items() retrieve all keys, values or key/value pairs
+    assert list(world_capitals.keys()) == ['Philippines', 'Canada', 'Spain', 'South Korea', 'Australia', 'United Kingdom']
+    assert list(world_capitals.values()) == ['Manila', 'Ottawa', 'Madrid', 'Seoul', 'Canberra', 'London']
+    assert list(world_capitals.items()) == [('Philippines', 'Manila'),
+                                            ('Canada', 'Ottawa'),
+                                            ('Spain', 'Madrid'),
+                                            ('South Korea', 'Seoul'),
+                                            ('Australia', 'Canberra'),
+                                            ('United Kingdom', 'London')]
+
+    # Using items() is convenient for looping over keys and values together
+    sentences = []
+    for country, capital in world_capitals.items():
+        sentences.append(f'{capital} is the capital of {country}') 
+    assert sentences[0] == 'Manila is the capital of Philippines'
+    assert len(world_capitals) == 6
