@@ -77,3 +77,75 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+def test_dictionary_update():
+    """Updating dictionary entries."""
+
+    fruit_inventory = {
+        'pineapple': 11,
+        'watermelon': 5,
+        'lemon': 16,
+        'cherry': 30
+    }
+
+    # Assigning a value to an existing key replaces the value
+    fruit_inventory['lemon'] = 21
+    assert fruit_inventory['lemon'] == 21
+
+    # Using update() to overwrite existing keys with values in a dictionary
+    fruit_inventory.update({'pineapple': 8, 'watermelon': 11})
+    assert fruit_inventory['pineapple'] == 8
+    assert fruit_inventory['watermelon'] == 11
+
+    # Using update() also accepts keyword arguments when keys are simple strings
+    fruit_inventory.update(cherry=21)
+    assert fruit_inventory['cherry'] == 21
+
+    # Checking the length of the dictionary because updating does not change its length
+    assert len(fruit_inventory) == 4
+
+def test_dictionary_retrieval():
+    """Retrieving dictionary entries."""
+
+    world_capitals = {
+        'Philippines': 'Manila',
+        'Canada': 'Ottawa',
+        'Spain': 'Madrid',
+        'South Korea': 'Seoul',
+        'Australia': 'Canberra',
+        'United Kingdom': 'London'
+    }
+
+    # Using sqaure brackets return the value of a key
+    assert world_capitals['Canada'] == 'Ottawa'
+
+    # Sqaure brackets raise a KeyError when the key is missing
+    try:
+        world_capitals['Brazil']
+        assert False, 'KeyError was expected'
+    except KeyError:
+        pass
+
+    # Using get() returns None for a missing key instead of raising a KeyError
+    assert world_capitals.get('Brazil') is None
+
+    # get() also returns a default value if one is provided
+    assert world_capitals.get('Brazil', 'Unknown') == 'Unknown'
+    assert world_capitals.get('Spain', 'Unknown') == 'Madrid'
+
+    # Using keys(), values() and items() retrieve all keys, values or key/value pairs
+    assert list(world_capitals.keys()) == ['Philippines', 'Canada', 'Spain', 'South Korea', 'Australia', 'United Kingdom']
+    assert list(world_capitals.values()) == ['Manila', 'Ottawa', 'Madrid', 'Seoul', 'Canberra', 'London']
+    assert list(world_capitals.items()) == [('Philippines', 'Manila'),
+                                            ('Canada', 'Ottawa'),
+                                            ('Spain', 'Madrid'),
+                                            ('South Korea', 'Seoul'),
+                                            ('Australia', 'Canberra'),
+                                            ('United Kingdom', 'London')]
+
+    # Using items() is convenient for looping over keys and values together
+    sentences = []
+    for country, capital in world_capitals.items():
+        sentences.append(f'{capital} is the capital of {country}') 
+    assert sentences[0] == 'Manila is the capital of Philippines'
+    assert len(world_capitals) == 6
