@@ -121,3 +121,19 @@ def test_function_definition():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
+
+def test_function_return_values():
+    """tests that functions return values"""
+    def min_max(numbers):
+        return min(numbers), max(numbers)
+
+    low, high = min_max([4, 1, 9, 3])
+    assert low == 1
+    assert high == 9
+
+def test_function_without_return():
+    """tests functions that return no values or dont return"""
+    def do_nothing():
+        pass
+
+    assert do_nothing() is None
