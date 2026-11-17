@@ -369,19 +369,23 @@ def test_slicing_list():
         - "stop" index is not included,
         - "step" determines how many values you skip or jump over (by default step=1)
     """
-
+    # List of numbers 
     numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+    # from index 0 to 6, you do steps of 2
     assert numbers[0:6] == [0, 1, 2, 3, 4, 5]
     assert numbers[0:6:2] == [0, 2, 4]
 
+    # if we don't add ":" after the "start" index, it will return a single value
     assert numbers[-3] == 7
     assert numbers[-3:] == [7, 8, 9]
 
     assert numbers[::2] == [0, 2, 4, 6, 8]
     assert numbers[1::2] == [1, 3, 5, 7, 9]
 
+    # negative steps moves backwards (from right to left)
     assert numbers[::-1] == [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
     assert numbers[::-3] == [9, 6, 3, 0]
 
     assert numbers[2:8:3] == [2, 5]
+    
