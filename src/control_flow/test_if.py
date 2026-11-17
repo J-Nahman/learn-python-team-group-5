@@ -78,6 +78,8 @@ def test_if_nested_conditions():
 
     assert check_entry(25, True) == 'Enter'
     assert check_entry(12, True) == 'Enter with an adult'
+    # 17 is exactly under the age limit, so it must still give 'enter with adult'.
+    assert check_entry(17, True) == 'Enter with an adult' 
     # Without a ticket the age is never checked, so both ages give the same result.
     assert check_entry(25, False) == 'Buy a ticket first'
     assert check_entry(12, False) == 'Buy a ticket first'
